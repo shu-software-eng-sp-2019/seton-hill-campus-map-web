@@ -1,0 +1,36 @@
+
+
+/* GLOBAL STYLES */
+
+
+.App {
+  height: 100%;
+  width: 100%;
+}
+
+
+#root{
+  height: 100%;
+  width: 100%;
+}
+
+/* NAV */
+
+nav {
+  background-color: #C00026;
+}
+
+/* .active {
+  color: white;
+} */
+
+.navbar-brand {
+  font-size: 1.75rem !important;
+}
+
+/* FONT */
+
+.text-size-sm {
+  font-size: 13px;
+}
+
