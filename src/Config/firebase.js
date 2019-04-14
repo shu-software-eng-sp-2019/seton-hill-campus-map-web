@@ -14,6 +14,5 @@ const config = {
 };
 firebase.initializeApp(config);
 firebase.firestore();
-console.log(process.env.FIREBASE_KEY);
 
 export default firebase;

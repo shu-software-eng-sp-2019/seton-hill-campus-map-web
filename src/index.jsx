@@ -16,6 +16,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import App from './App';
 import { unregister } from './serviceWorker';
 
+import mapboxgl from 'mapbox-gl';
+
 const store = createStore();
 
 // store.dispatch(fetchDataset());
@@ -30,6 +32,7 @@ const rrfProps = {
 const root = document.getElementById('root');
 
 const load = () => {
+  mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
   render((
     <AppContainer style={{ height: '100%', width: '100%' }}>
       <Provider store={store}>
