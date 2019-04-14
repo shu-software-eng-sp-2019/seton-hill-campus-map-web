@@ -1,11 +1,34 @@
 {
   "name": "shu-campus-map",
   "version": "0.1.0",
+  "homepage": "https://shu-software-eng-sp-2019.github.io/seton-hill-campus-map-web/",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "bootstrap": "^4.3.1",
+    "dotenv": "^6.2.0",
+    "dotenv-webpack": "^1.7.0",
+    "firebase": "^5.9.4",
+    "mapbox-gl": "^0.53.1",
+    "prop-types": "^15.7.2",
+    "react-dates": "^18.5.0",
+    "react-google-button": "^0.5.3",
+    "react-hot-loader": "^4.8.3",
+    "react-map-gl": "^4.1.2",
+    "react-moment-proptypes": "^1.6.0",
+    "react-redux": "^6.0.1",
+    "react-redux-firebase": "^3.0.0-alpha.11",
+    "react-router": "^4.3.1",
+    "react-router-bootstrap": "^0.24.4",
+    "react-router-dom": "^4.3.1",
+    "react-router-prop-types": "^1.0.4",
+    "react-with-direction": "^1.3.0",
+    "reactstrap": "^7.1.0",
+    "redux": "^4.0.1",
+    "redux-firestore": "^1.0.0-alpha.2",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,5 +44,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "braces": "^3.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "tar": "^4.4.8"
+  }
 }
