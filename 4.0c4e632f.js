@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{697:function(e,n,t){"use strict";t.r(n);var a=t(1),i=t.n(a);const l=i.a.lazy(()=>t.e(3).then(t.bind(null,696)));n.default=(()=>i.a.createElement("div",{className:"container-fluid",style:{height:"100%",width:"100%",marginBottom:"60px"}},i.a.createElement(l,null)))}}]);
