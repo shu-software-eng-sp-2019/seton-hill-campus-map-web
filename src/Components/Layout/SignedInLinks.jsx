@@ -5,8 +5,10 @@ import {
   NavLink,
   UncontrolledDropdown,
   DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
-
+// import { Link } from 'react-router-dom';
 
 const SignedInLinks = () => (
   <Nav className="ml-auto" navbar>
@@ -14,8 +16,15 @@ const SignedInLinks = () => (
       <NavLink>Map</NavLink>
     </LinkContainer>
     <UncontrolledDropdown nav inNavbar>
-      <DropdownToggle nav>
+      <DropdownToggle nav caret>
         { 'Welcome to SHU!' }
+        <DropdownMenu right>
+          <DropdownItem>
+            <LinkContainer to="/admin">
+              <div>Administrators</div>
+            </LinkContainer>
+          </DropdownItem>
+        </DropdownMenu>
       </DropdownToggle>
     </UncontrolledDropdown>
   </Nav>
