@@ -1,6 +1,13 @@
 /* eslint-disable no-param-reassign */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import mapboxgl from 'mapbox-gl'
+import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { getBuildings } from '../../Store/Actions/mapActions';
+
+let map = null;
 
 const getMap = () => {
   const bounds = new mapboxgl.LngLatBounds(
@@ -16,23 +23,87 @@ const getMap = () => {
       zoom: 15.5,
       style: 'mapbox://styles/ck108860/cjrjllu0r06rt2sl9y702tkbe',
       minZoom: 14.5,
-      maxBounds: bounds
+      maxBounds: bounds,
+      doubleClickZoom: true,
+      keyboard: true,
     });
 };
 
-const Map = () => {
+const getTable = (buildings) => {
+  if(buildings !== undefined){
+    var jsx = buildings.map((building, index) => {
+      return (
+        <tr key={index} className={"border-bottom"}>
+          <td className={""} onClick={() => goToCoords(building.coordinates)}>
+            <h5>{ building.name } <br/><small style={{color: "grey"}}>{ building.description }</small></h5>
+          </td>
+        </tr> 
+      );
+    });
+    return jsx;
+  } else {
+    return (<tr><td>Loading...</td></tr>);
+  }
+};
 
+const goToCoords = (coords) => {
+  console.log(coords);
+  if(map){
+    map.flyTo({
+      center: [coords._long, coords._lat],
+      zoom: 18,
+    });
+  }
+};
+
+const Map = (props) => {
   useEffect(()=>{
-    getMap();
+    map = getMap();
   });
 
-  // const onDoubleClick = (e) => {
-  //   console.log(e);
-  // };
+  const { buildings } = props;
 
   return (
-    <div id="mapContainer" style={{height: "100%", width: "100%"}}></div>
+    <div className={"container-fluid"} style={{height: "100%", width: "100%", paddingRight: 0, paddingLeft: 0}}>
+      <div className={"row"} style={{height: "100%", width: "100%", marginLeft: 0, marginRight: 0}}>
+        <div 
+          className={"col-3"}
+          id="legend" 
+          style={{height: "100%",
+            backgroundColor: "white", zIndex: 99, 
+            overflow: "auto", left: 0, paddingRight: 0, paddingLeft: 0, boxShadow: "1px 1px 1px 1px lightgrey"
+          }}
+        >
+          <table className={"table table-hover"}>
+            <tbody>
+              { getTable(buildings) }
+            </tbody>
+          </table>
+        </div>
+        <div className={"col-9"} id="mapContainer" style={{height: "100%", width: "100%", paddingLeft: 0}}></div>
+      </div>
+    </div>
   );
 };
 
-export default Map;
+const mapStateToProps = (state, props) => ({
+  buildings: state.firestore.ordered.buildings,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getAllBuildings: () => dispatch(getBuildings()),
+});
+
+Map.defaultProps = {
+  getAllBuildings: () => null,
+  authError: null,
+};
+
+Map.propTypes = {
+  getAllBuildings: PropTypes.func,
+};
+
+export default compose(
+  firestoreConnect(() => ['buildings']),
+  connect(mapStateToProps, mapDispatchToProps),
+)(Map);
