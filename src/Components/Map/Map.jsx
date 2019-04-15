@@ -33,7 +33,7 @@ const getTable = (buildings) => {
   if(buildings !== undefined){
     var jsx = buildings.map((building, index) => {
       return (
-        <tr key={index} className={"border-bottom"}>
+        <tr key={index} className={""}>
           <td className={""} onClick={() => goToCoords(building.coordinates)}>
             <h5>{ building.name } <br/><small style={{color: "grey"}}>{ building.description }</small></h5>
           </td>
@@ -64,23 +64,23 @@ const Map = (props) => {
   const { buildings } = props;
 
   return (
-    <div className={"container-fluid"} style={{height: "100%", width: "100%", paddingRight: 0, paddingLeft: 0}}>
-      <div className={"row"} style={{height: "100%", width: "100%", marginLeft: 0, marginRight: 0}}>
+    <div className={"container-fluid"} style={{height: "100%", width: "100%", padding: 0}}>
+      <div className={"row"} style={{height: "100%", width: "100%", margin: 0, padding: 0}}>
         <div 
-          className={"col-3"}
+          className={"col-md-3"}
           id="legend" 
-          style={{height: "100%",
+          style={{height: "auto",
             backgroundColor: "white", zIndex: 99, 
             overflow: "auto", left: 0, paddingRight: 0, paddingLeft: 0, boxShadow: "1px 1px 1px 1px lightgrey"
           }}
         >
-          <table className={"table table-hover"}>
+          <table className={"table table-hover table-bordered table-responsive-md"}>
             <tbody>
               { getTable(buildings) }
             </tbody>
           </table>
         </div>
-        <div className={"col-9"} id="mapContainer" style={{height: "100%", width: "100%", paddingLeft: 0}}></div>
+        <div className={"col-md-9"} id="mapContainer" style={{height: "100%", width: "100%", paddingLeft: 0}}></div>
       </div>
     </div>
   );
@@ -104,6 +104,6 @@ Map.propTypes = {
 };
 
 export default compose(
-  firestoreConnect(() => ['buildings']),
+  firestoreConnect(() => [{collection: 'buildings', orderBy: 'name'}]),
   connect(mapStateToProps, mapDispatchToProps),
 )(Map);
