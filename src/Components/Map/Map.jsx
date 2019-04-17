@@ -47,7 +47,6 @@ const getTable = (buildings) => {
 };
 
 const goToCoords = (coords) => {
-  console.log(coords);
   if(map){
     map.flyTo({
       center: [coords._long, coords._lat],

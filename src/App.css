@@ -25,10 +25,6 @@ nav {
   background-color: #C00026;
 }
 
-/* .active {
-  color: white;
-} */
-
 .navbar-brand {
   font-size: 1.75rem !important;
 }
@@ -37,4 +33,17 @@ nav {
 
 .text-size-sm {
   font-size: 13px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 640px) { 
+  #header { 
+    display: none; 
+  }
+
+  footer { 
+    display: none !important; 
+  }
 }

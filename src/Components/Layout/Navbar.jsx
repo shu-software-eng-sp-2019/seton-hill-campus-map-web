@@ -31,7 +31,7 @@ const WBNavbar = (props) => {
   const links = <SignedInLinks />;
 
   return (
-    <div>
+    <div id="header">
       <Navbar
         className="shadow"
         style={styles}
