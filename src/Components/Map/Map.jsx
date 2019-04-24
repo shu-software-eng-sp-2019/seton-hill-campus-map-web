@@ -68,9 +68,9 @@ const Map = (props) => {
         <div 
           className={"col-md-3"}
           id="legend" 
-          style={{height: "auto",
+          style={{height: "100%",
             backgroundColor: "white", zIndex: 99, 
-            overflow: "auto", left: 0, paddingRight: 0, paddingLeft: 0, boxShadow: "1px 1px 1px 1px lightgrey"
+            overflow: "scroll", left: 0, paddingRight: 0, paddingLeft: 0, paddingBottom: "2em", boxShadow: "1px 1px 1px 1px lightgrey"
           }}
         >
           <table className={"table table-hover table-bordered table-responsive-md"}>

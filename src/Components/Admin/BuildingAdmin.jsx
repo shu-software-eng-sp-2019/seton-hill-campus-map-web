@@ -78,7 +78,6 @@ const BuildingAdmin = (props) => {
           <FormGroup row>
             <Label for="hasClassrooms">hasClassrooms</Label>
             <Input
-              required
               type="checkbox"
               name="hasClassrooms"
               id="hasClassrooms"

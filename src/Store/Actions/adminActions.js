@@ -26,7 +26,7 @@ export const createParkingLot = parkingLot => (dispatch, getState, { getFirestor
     coordinates: coords,
     description: parkingLot.description,
     commuterLot: Boolean(parkingLot.commuterLot),
-    publicLot: parkingLot.publicLot,
+    publicLot: Boolean(parkingLot.publicLot),
     name: parkingLot.name,
   }).then(() => {
     dispatch({ type: CREATE_PARKING_LOT, parkingLot });

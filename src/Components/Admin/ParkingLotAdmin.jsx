@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { firebaseConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { createBuilding } from '../../Store/Actions/adminActions';
+import { createParkingLot } from '../../Store/Actions/adminActions';
 
 const AuthCard = React.lazy(() => import('../Auth/AuthCard'));
 
@@ -64,7 +64,6 @@ const ParkingLotAdmin = (props) => {
           <FormGroup row>
             <Label for="commuterLot">Commuter Lot</Label>
             <Input
-              required
               type="checkbox"
               name="commuterLot"
               id="hasClassrooms"
@@ -76,7 +75,6 @@ const ParkingLotAdmin = (props) => {
           <FormGroup row>
             <Label for="publicLot">Public Lot</Label>
             <Input
-              required
               type="checkbox"
               name="publicLot"
               id="publicLot"
@@ -99,7 +97,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    createNewParkingLot: building => dispatch(createBuilding(building)),
+    createNewParkingLot: building => dispatch(createParkingLot(building)),
 });
 
 ParkingLotAdmin.defaultProps = {
