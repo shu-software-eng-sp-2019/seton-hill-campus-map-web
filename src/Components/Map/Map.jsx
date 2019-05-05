@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React, { useEffect } from 'react';
-import mapboxgl from 'mapbox-gl'
+import mapboxgl from 'mapbox-gl';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';

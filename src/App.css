@@ -38,9 +38,13 @@ nav {
 
 /* MEDIA QUERIES */
 
-@media only screen and (max-width: 640px) { 
+@media only screen and (max-width: 700px) { 
   #header { 
     display: none; 
+  }
+
+  #legend {
+    height: 32% !important;
   }
 
   footer { 

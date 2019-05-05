@@ -10,6 +10,8 @@ import Footer from './Components/Layout/Footer';
 import Dashboard from './Components/Dashboard/Dashboard';
 
 const AdminDashboard = lazy(() => import('./Components/Admin/AdminDashboard'));
+const SignIn = lazy(() => import('./Components/Auth/SignIn'));
+const Register = lazy(() => import('./Components/Auth/Register'));
 
 const App = () => (
   <div style={{ height: '90%', width: '100%' }}>
@@ -19,6 +21,8 @@ const App = () => (
         <Route exact path="/" component={() => <Dashboard />} />
         <Suspense fallback={<div>Loading...</div>}>
           <Route exact path="/admin" component={() => <AdminDashboard />} />
+          <Route exact path="/signin" component={() => <SignIn />} />
+          <Route path="/register" component={() => <Register />} />
         </Suspense>
       </Switch>
     </div>
