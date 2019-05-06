@@ -43,6 +43,15 @@ nav {
     display: none; 
   }
 
+  .table {
+    width: 100%;
+    height: 25%;
+  }
+
+  #legend {
+    width: 100%;
+  }
+
   footer { 
     display: none !important; 
   }
