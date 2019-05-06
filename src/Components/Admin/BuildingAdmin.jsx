@@ -44,45 +44,45 @@ const BuildingAdmin = (props) => {
             <Input required type="text" name="name" value={name} id="name" placeholder="Name..." onChange={e => setname(e.target.value)} />
           </FormGroup>
           <FormGroup row>
-            <Label for="description">description</Label>
+            <Label for="description">Description</Label>
             <Input
               required
               type="textarea"
               name="description"
               id="description"
               value={description}
-              placeholder="description..."
+              placeholder="Description..."
               onChange={e => setdescription(e.target.value)}
             />
           </FormGroup>
           <FormGroup row>
-            <Label for="latitude">latitude</Label>
-            <Input required type="number" name="latitude" value={latitude} id="latitude" placeholder="latitude..." onChange={e => setlatitude(e.target.value)} />
+            <Label for="latitude">Latitude</Label>
+            <Input required type="number" name="latitude" value={latitude} id="latitude" placeholder="Latitude..." onChange={e => setlatitude(e.target.value)} />
           </FormGroup>
           <FormGroup row>
-            <Label for="longitude">longitude</Label>
-            <Input required type="number" name="longitude" value={longitude} id="longitude" placeholder="longitude..." onChange={e => setlongitude(e.target.value)} />
+            <Label for="longitude">Longitude</Label>
+            <Input required type="number" name="longitude" value={longitude} id="longitude" placeholder="Longitude..." onChange={e => setlongitude(e.target.value)} />
           </FormGroup>
           <FormGroup row>
             <Label for="type">Type</Label>
             <Input required type="text" name="type" id="type" value={type} placeholder="Type..." onChange={e => settype(e.target.value)} />
           </FormGroup>
           <FormGroup row>
-            <Label for="iconName">iconName</Label>
-            <Input required type="text" name="iconName" id="iconName" value={iconName} placeholder="iconName..." onChange={e => seticonName(e.target.value)} />
+            <Label for="iconName">Icon Name</Label>
+            <Input required type="text" name="iconName" id="iconName" value={iconName} placeholder="Icon Name..." onChange={e => seticonName(e.target.value)} />
           </FormGroup>
           <FormGroup row>
-            <Label for="levels">levels</Label>
-            <Input required type="number" name="levels" id="levels" value={levels} placeholder="levels..." onChange={e => setlevels(e.target.value)} />
+            <Label for="levels">Levels</Label>
+            <Input required type="number" name="levels" id="levels" value={levels} placeholder="Levels..." onChange={e => setlevels(e.target.value)} />
           </FormGroup>
           <FormGroup row>
-            <Label for="hasClassrooms">hasClassrooms</Label>
+            <Label for="hasClassrooms">Has Classrooms?</Label>
             <Input
               type="checkbox"
               name="hasClassrooms"
               id="hasClassrooms"
               value={hasClassrooms}
-              placeholder="hasClassrooms..."
+              placeholder="Has Classrooms..."
               onChange={e => sethasClassrooms(e.target.value)}
             />
           </FormGroup>

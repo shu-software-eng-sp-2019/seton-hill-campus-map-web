@@ -23,49 +23,47 @@ const SignIn = (props) => {
     firebaseSignIn({ email, password });
   };
 
-  googleSignIn = (e) => {
+  const googleSignIn = (e) => {
     e.preventDefault();
     const { googleFirebaseSignIn } = props;
     googleFirebaseSignIn();
   };
 
-  render = () => {
-    const { authError, auth } = props;
-    if (auth.uid) return <Redirect to="/" />;
-    return (
-      <AuthCard outline>
-        <Form onSubmit={handleSubmit}>
-          <FormGroup row className="text-center">
-            <div className="col-12">
-              <h4>Sign In</h4>
-            </div>
-          </FormGroup>
-          <FormGroup row>
-            <Label for="email">Email</Label>
-            <Input required type="email" name="email" id="email" value={email} placeholder="Email..." onChange={e => setEmail(e.target.value)} />
-          </FormGroup>
-          <FormGroup row>
-            <Label for="password">Password</Label>
-            <Input required type="password" name="password" id="password" value={password} placeholder="Password..." onChange={e => setPassword(e.target.value)} />
-          </FormGroup>
-          <FormGroup row className="text-center text-muted">
-            <div className="col-12">
-              <Label>
-                { registerText }
-                {' '}
-                <Link style={Styles.linkDecoration} to="/register">Register now!</Link>
-              </Label>
-            </div>
-          </FormGroup>
-          <Alert isOpen={!!authError} color="danger">{ authError || null }</Alert>
-          <Button style={{ backgroundColor: '#C00026', borderColor: '#C00026' }}>Sign In</Button>
-          <br />
-        </Form>
-        <hr />
-        <GoogleButton style={{ height: '50px', width: '100%' }} onClick={googleSignIn} type="dark" />
-      </AuthCard>
-    );
-  };
+  const { authError, auth } = props;
+  if (auth.uid) return <Redirect to="/" />;
+  return (
+    <AuthCard outline>
+      <Form onSubmit={handleSubmit}>
+        <FormGroup row className="text-center">
+          <div className="col-12">
+            <h4>Sign In</h4>
+          </div>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="email">Email</Label>
+          <Input required type="email" name="email" id="email" value={email} placeholder="Email..." onChange={e => setEmail(e.target.value)} />
+        </FormGroup>
+        <FormGroup row>
+          <Label for="password">Password</Label>
+          <Input required type="password" name="password" id="password" value={password} placeholder="Password..." onChange={e => setPassword(e.target.value)} />
+        </FormGroup>
+        <FormGroup row className="text-center text-muted">
+          <div className="col-12">
+            <Label>
+              { registerText }
+              {' '}
+              <Link style={Styles.linkDecoration} to="/register">Register now!</Link>
+            </Label>
+          </div>
+        </FormGroup>
+        <Alert isOpen={!!authError} color="danger">{ authError || null }</Alert>
+        <Button style={{ backgroundColor: '#C00026', borderColor: '#C00026' }}>Sign In</Button>
+        <br />
+      </Form>
+      <hr />
+      <GoogleButton style={{ height: '50px', width: '100%' }} onClick={googleSignIn} type="dark" />
+    </AuthCard>
+  );
 };
 
 const mapStateToProps = state => ({

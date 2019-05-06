@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
-  Button, Form, FormGroup, Label, Input,
+  Button, Form, FormGroup, Label, Input, Alert
 } from 'reactstrap';
+import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { firebaseConnect } from 'react-redux-firebase';
@@ -27,8 +28,8 @@ const Register = (props) => {
     });
   };
 
-  // const { auth, authError } = props;
-  // if (auth.uid) return <Redirect to="/" />;
+  const { auth, authError } = props;
+  if (auth.uid) return <Redirect to="/" />;
   return (
     <AuthCard outline>
       <Form onSubmit={handleSubmit}>
@@ -72,7 +73,7 @@ const Register = (props) => {
             </Label>
           </div>
         </FormGroup>
-        {/* <Alert isOpen={!!authError} color="danger">{ authError || null }</Alert> */}
+        <Alert isOpen={!!authError} color="danger">{ authError || null }</Alert>
         <Button>Register</Button>
       </Form>
     </AuthCard>
@@ -90,14 +91,14 @@ const mapDispatchToProps = dispatch => ({
 
 Register.defaultProps = {
   emailRegister: () => null,
-  // authError: null,
+  authError: null,
 };
 
 Register.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  // auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
   emailRegister: PropTypes.func,
-  // authError: PropTypes.string,
+  authError: PropTypes.string,
 };
 
 export default compose(
