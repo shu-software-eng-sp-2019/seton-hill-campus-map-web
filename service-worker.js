@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/seton-hill-campus-map-web/precache-manifest.eb5725a0611e113e9726b867b545f32b.js"
+  "/seton-hill-campus-map-web/precache-manifest.211a1f8054dc25f786f71948931edaa1.js"
 );
 
 workbox.clientsClaim();
