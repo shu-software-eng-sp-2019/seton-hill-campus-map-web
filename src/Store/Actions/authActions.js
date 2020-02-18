@@ -11,30 +11,6 @@ const signIn = credentials => (dispatch) => {
   });
 };
 
-const googleSignIn = () => (dispatch, getState, { getFirestore }) => {
-  const firestore = getFirestore();
-  const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().useDeviceLanguage();
-  firebase.auth().signInWithPopup(provider).then((result) => {
-    const { user } = result;
-    const firstName = user.displayName.split(' ')[0];
-    const lastName = user.displayName.split(' ')[1];
-    firestore.collection('users').doc(user.uid).set({
-      firstName,
-      lastName,
-      initials: firstName[0] + lastName[0],
-    })
-      .catch((err) => {
-        dispatch({ type: 'LOGIN_ERROR', err });
-      });
-  }).then(() => {
-    dispatch({ type: 'LOGIN_SUCCESS' });
-  })
-    .catch((err) => {
-      dispatch({ type: 'LOGIN_ERROR', err });
-    });
-};
-
 const signOut = () => (dispatch) => {
   firebase.auth().signOut().then(() => {
     dispatch({ type: 'SIGNOUT_SUCCESS' });
@@ -59,5 +35,5 @@ const emailReg = newUser => (dispatch, getState, { getFirestore }) => {
 };
 
 export {
-  signIn, googleSignIn, signOut, emailReg,
+  signIn, signOut, emailReg,
 };
