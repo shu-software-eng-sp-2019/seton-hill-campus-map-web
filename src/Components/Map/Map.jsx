@@ -35,7 +35,7 @@ const getTable = (buildings) => {
       return (
         <tr key={index} className={""}>
           <td className={""} onClick={() => goToCoords(building.coordinates)}>
-            <h5>{ building.name } <br/><small style={{color: "grey"}}>{ building.description }</small></h5>
+            <h6 style={{margin: "0"}}>{ building.name }</h6>
           </td>
         </tr> 
       );
@@ -64,13 +64,13 @@ const Map = (props) => {
 
   return (
     <div className={"container-fluid"} style={{height: "100%", width: "100%", padding: 0}}>
-      <div className={"row"} style={{height: "100%", width: "100%", margin: 0, padding: 0}}>
+      <div id={"legendRow"} className={"row"} style={{height: "100%", width: "100%", margin: 0, padding: 0}}>
         <div 
           className={"col-md-3"}
           id="legend" 
           style={{height: "100%",
             backgroundColor: "white", zIndex: 99, 
-            overflow: "scroll", left: 0, paddingRight: 0, paddingLeft: 0, paddingBottom: "2em", boxShadow: "1px 1px 1px 1px lightgrey"
+            overflowY: "scroll", left: 0, paddingRight: 0, paddingLeft: 0, paddingBottom: "2em", boxShadow: "1px 1px 1px 1px lightgrey"
           }}
         >
           <table className={"table table-hover table-bordered table-responsive-md"}>
