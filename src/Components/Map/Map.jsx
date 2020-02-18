@@ -15,94 +15,118 @@ const getMap = () => {
     new mapboxgl.LngLat(-79.525452, 40.336966)
   );
 
-    return new mapboxgl.Map({ 
-      center: [-79.5539696243362, 40.30728689571579],
-      container: 'mapContainer',
-      bearing: 300,
-      pitch: 45,
-      zoom: 15.5,
-      style: 'mapbox://styles/ck108860/cjrjllu0r06rt2sl9y702tkbe',
-      minZoom: 14.5,
-      maxBounds: bounds,
-      doubleClickZoom: true,
-      keyboard: true,
-    });
+  return new mapboxgl.Map({
+    center: [-79.5539696243362, 40.30728689571579],
+    container: 'mapContainer',
+    bearing: 300,
+    pitch: 45,
+    zoom: 15.5,
+    style: 'mapbox://styles/ck108860/cjrjllu0r06rt2sl9y702tkbe',
+    minZoom: 14.5,
+    maxBounds: bounds,
+    doubleClickZoom: true,
+    keyboard: true
+  });
 };
 
-const getTable = (buildings) => {
-  if(buildings !== undefined){
+const getTable = buildings => {
+  if (buildings !== undefined) {
     var jsx = buildings.map((building, index) => {
       return (
-        <tr key={index} className={""}>
-          <td className={""} onClick={() => goToCoords(building.coordinates)}>
-            <h6 style={{margin: "0"}}>{ building.name }</h6>
+        <tr key={index} className={''}>
+          <td className={''} onClick={() => goToCoords(building.coordinates)}>
+            <h5>
+              {building.name} <br />
+              <small style={{ color: 'grey' }}>{building.description}</small>
+            </h5>
           </td>
-        </tr> 
+        </tr>
       );
     });
     return jsx;
   } else {
-    return (<tr><td>Loading...</td></tr>);
+    return (
+      <tr>
+        <td>Loading...</td>
+      </tr>
+    );
   }
 };
 
-const goToCoords = (coords) => {
-  if(map){
+const goToCoords = coords => {
+  if (map) {
     map.flyTo({
       center: [coords._long, coords._lat],
-      zoom: 18,
+      zoom: 18
     });
   }
 };
 
-const Map = (props) => {
-  useEffect(()=>{
+const Map = props => {
+  useEffect(() => {
     map = getMap();
   });
 
   const { buildings } = props;
 
   return (
-    <div className={"container-fluid"} style={{height: "100%", width: "100%", padding: 0}}>
-      <div id={"legendRow"} className={"row"} style={{height: "100%", width: "100%", margin: 0, padding: 0}}>
-        <div 
-          className={"col-md-3"}
-          id="legend" 
-          style={{height: "100%",
-            backgroundColor: "white", zIndex: 99, 
-            overflowY: "scroll", left: 0, paddingRight: 0, paddingLeft: 0, paddingBottom: "2em", boxShadow: "1px 1px 1px 1px lightgrey"
+    <div
+      className={'container-fluid'}
+      style={{ height: '100%', width: '100%', padding: 0 }}
+    >
+      <div
+        className={'row'}
+        style={{ height: '100%', width: '100%', margin: 0, padding: 0 }}
+      >
+        <div
+          className={'col-md-3'}
+          id='legend'
+          style={{
+            height: '100%',
+            backgroundColor: 'white',
+            zIndex: 99,
+            overflow: 'scroll',
+            left: 0,
+            paddingRight: 0,
+            paddingLeft: 0,
+            paddingBottom: '2em',
+            boxShadow: '1px 1px 1px 1px lightgrey'
           }}
         >
-          <table className={"table table-hover table-bordered table-responsive-md"}>
-            <tbody>
-              { getTable(buildings) }
-            </tbody>
+          <table
+            className={'table table-hover table-bordered table-responsive-md'}
+          >
+            <tbody>{getTable(buildings)}</tbody>
           </table>
         </div>
-        <div className={"col-md-9"} id="mapContainer" style={{height: "100%", width: "100%", paddingLeft: 0}}></div>
+        <div
+          className={'col-md-9'}
+          id='mapContainer'
+          style={{ height: '100%', width: '100%', paddingLeft: 0 }}
+        ></div>
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state, props) => ({
-  buildings: state.firestore.ordered.buildings,
+  buildings: state.firestore.ordered.buildings
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllBuildings: () => dispatch(getBuildings()),
+  getAllBuildings: () => dispatch(getBuildings())
 });
 
 Map.defaultProps = {
   getAllBuildings: () => null,
-  authError: null,
+  authError: null
 };
 
 Map.propTypes = {
-  getAllBuildings: PropTypes.func,
+  getAllBuildings: PropTypes.func
 };
 
 export default compose(
-  firestoreConnect(() => [{collection: 'buildings', orderBy: 'name'}]),
-  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect(() => [{ collection: 'buildings', orderBy: 'name' }]),
+  connect(mapStateToProps, mapDispatchToProps)
 )(Map);
